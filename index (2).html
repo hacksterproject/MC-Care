@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login and Registration portal for hospital admins and doctors">
+    <meta name="keywords" content="Hospital, Admin, Doctor, Login, Registration">
+    <meta name="author" content="Your Organization Name">
+    <title>Hospital Login and Registration</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0277bd;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid #0277bd;
+            margin-bottom: 20px;
+        }
+
+        .tabs button {
+            width: 50%;
+            padding: 10px;
+            border: none;
+            background: #e3f2fd;
+            color: #0277bd;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .tabs button.active {
+            background: #ffffff;
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .form-container {
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333333;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0277bd;
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #01579b;
+        }
+
+        .form-group a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #0277bd;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .form-group a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" role="main">
+    <h2 id="form-title">Hospital Login</h2>
+
+    <div class="tabs">
+        <button id="loginTab" class="active">Login</button>
+        <button id="registerTab">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginForm" class="form-container active">
+        <form action="dashboard.html" method="POST">
+            <div class="form-group">
+                <label for="loginUsername">Username:</label>
+                <input type="text" id="loginUsername" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Login</button>
+            </div>
+            <div class="form-group">
+                <a href="#" id="switchToRegister">New User? Register Here</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Registration Form -->
+    <div id="registerForm" class="form-container">
+        <form action="submit_registration.php" method="POST">
+            <div class="form-group">
+                <label for="regName">Name:</label>
+                <input type="text" id="regName" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="regEmail">Email (Gmail):</label>
+                <input type="email" id="regEmail" name="email" placeholder="Enter your Gmail" required>
+            </div>
+            <div class="form-group">
+                <label for="regPassword">Password:</label>
+                <input type="password" id="regPassword" name="password" placeholder="Create a password" required>
+            </div>
+            <div class="form-group">
+                <label for="regHospital">Hospital Name:</label>
+                <input type="text" id="regHospital" name="hospital" placeholder="Enter the hospital name" required>
+            </div>
+            <div class="form-group">
+                <label for="regLocation">Location:</label>
+                <input type="text" id="regLocation" name="location" placeholder="Enter hospital location" required>
+            </div>
+            <div class="form-group">
+                <label for="regCity">City:</label>
+                <input type="text" id="regCity" name="city" placeholder="Enter city" required>
+            </div>
+            <div class="form-group">
+                <label for="regState">State:</label>
+                <input type="text" id="regState" name="state" placeholder="Enter state" required>
+            </div>
+            <div class="form-group">
+                <label for="regPincode">Pincode:</label>
+                <input type="text" id="regPincode" name="pincode" placeholder="Enter pincode" required>
+            </div>
+            <div class="form-group">
+                <label for="regPhoneNumber">Phone Number:</label>
+                <input type="tel" id="regPhoneNumber" name="phone" placeholder="Enter phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="regAltPhoneNumber">Alternative Phone Number:</label>
+                <input type="tel" id="regAltPhoneNumber" name="altPhone" placeholder="Enter alternative phone number" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Register</button>
+            </div>
+            <div class="form-group">
+                <a href="#" id="switchToLogin">Already Registered? Login Here</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Tab switching functionality
+    const loginTab = document.getElementById('loginTab');
+    const registerTab = document.getElementById('registerTab');
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const switchToRegister = document.getElementById('switchToRegister');
+    const switchToLogin = document.getElementById('switchToLogin');
+
+    function showLoginForm() {
+        loginTab.classList.add('active');
+        registerTab.classList.remove('active');
+        loginForm.classList.add('active');
+        registerForm.classList.remove('active');
+        document.getElementById('form-title').textContent = 'Hospital Login';
+    }
+
+    function showRegisterForm() {
+        loginTab.classList.remove('active');
+        registerTab.classList.add('active');
+        loginForm.classList.remove('active');
+        registerForm.classList.add('active');
+        document.getElementById('form-title').textContent = 'Hospital Registration';
+    }
+
+    loginTab.addEventListener('click', showLoginForm);
+    registerTab.addEventListener('click', showRegisterForm);
+    switchToRegister.addEventListener('click', function(e) {
+        e.preventDefault();
+        showRegisterForm();
+    });
+    switchToLogin.addEventListener('click', function(e) {
+        e.preventDefault();
+        showLoginForm();
+    });
+</script>
+
+</body>
+</html>
